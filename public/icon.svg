@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="50%" stop-color="#047857" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#022c22" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background rounded canvas -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Inner subtle border glow -->
+  <rect x="12" y="12" width="488" height="488" rx="100" fill="none" stroke="#6ee7b7" stroke-width="4" stroke-opacity="0.3" />
+
+  <!-- Central Store / Shopping Bag Motif with Safe Zone Padding -->
+  <g filter="url(#shadow)">
+    <!-- Bag Handle -->
+    <path d="M196 180 C196 120, 316 120, 316 180" fill="none" stroke="#ffffff" stroke-width="26" stroke-linecap="round" />
+    
+    <!-- Bag Body -->
+    <path d="M148 180 L364 180 L394 376 C396 392, 384 406, 368 406 L144 406 C128 406, 116 392, 118 376 Z" fill="#ffffff" />
+    
+    <!-- Store Awning Stripes -->
+    <path d="M148 180 L364 180 L360 216 L152 216 Z" fill="url(#accentGrad)" />
+    
+    <!-- 24/7 Digital Fast Badge -->
+    <rect x="190" y="248" width="132" height="48" rx="14" fill="#047857" />
+    <text x="256" y="281" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#ffffff" text-anchor="middle" letter-spacing="1">24/7</text>
+
+    <!-- WhatsApp / Quick Delivery Fast Check Sparkle -->
+    <circle cx="346" cy="342" r="32" fill="url(#goldGrad)" />
+    <!-- Checkmark inside gold circle -->
+    <path d="M333 342 L343 352 L360 332" fill="none" stroke="#064e3b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Dollar / Multi-currency indicator -->
+    <circle cx="166" cy="342" r="30" fill="#ecfdf5" stroke="#059669" stroke-width="4" />
+    <text x="166" y="352" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="900" fill="#047857" text-anchor="middle">$</text>
+  </g>
+</svg>

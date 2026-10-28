@@ -1,0 +1,38 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Store configuration: Public read for storefront, write for store management
+    match /storeConfig/{configId} {
+      allow get, list: if true;
+      allow write: if isValidId(configId);
+    }
+
+    // Catalog Products: Public read for storefront browsing, write for product management
+    match /products/{productId} {
+      allow get, list: if true;
+      allow write: if isValidId(productId);
+    }
+
+    // Customer Orders: Shoppers create orders, owner views and updates statuses
+    match /orders/{orderId} {
+      allow get, list: if true;
+      allow write: if isValidId(orderId);
+    }
+
+    // Sessions: Multi-device owner session tokens
+    match /sessions/{sessionId} {
+      allow get, list: if true;
+      allow write: if isValidId(sessionId);
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VentaDirecta 24/7 - Catálogo Digital Bimonetario</title>
+    <meta name="description" content="Catálogo digital y tienda pública 24/7 con recepción instantánea de pedidos por WhatsApp, notificaciones push en tiempo real y precios bimonetarios actualizados en vivo." />
+    <meta property="og:title" content="VentaDirecta 24/7 - Catálogo Digital Bimonetario" />
+    <meta property="og:description" content="Catálogo digital y tienda pública 24/7 con recepción instantánea de pedidos por WhatsApp, notificaciones push en tiempo real y precios bimonetarios actualizados en vivo." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#059669" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="VentaDirecta" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+      // Ignore WebSocket disconnect errors in AI Studio iframe environment where HMR is disabled
+      window.addEventListener('error', function(event) {
+        if (event && (event.message?.includes('WebSocket') || event.filename?.includes('@vite/client'))) {
+          event.stopImmediatePropagation();
+          event.preventDefault();
+        }
+      }, true);
+      window.addEventListener('unhandledrejection', function(event) {
+        if (event && event.reason && (String(event.reason.message || event.reason).includes('WebSocket'))) {
+          event.stopImmediatePropagation();
+          event.preventDefault();
+        }
+      }, true);
+    </script>
+  </head>
+  <body class="bg-stone-50 text-stone-900 antialiased selection:bg-emerald-100 selection:text-emerald-900 font-sans">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

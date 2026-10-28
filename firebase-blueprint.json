@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "StoreConfig": {
+      "title": "StoreConfig",
+      "description": "Storewide configuration including name, exchange rates, and WhatsApp contact",
+      "type": "object",
+      "properties": {
+        "storeName": { "type": "string", "maxLength": 100 },
+        "logoUrl": { "type": "string", "maxLength": 1000 },
+        "whatsappNumber": { "type": "string", "maxLength": 30 },
+        "isOpen247": { "type": "boolean" },
+        "announcement": { "type": "string", "maxLength": 500 },
+        "baseExchangeRate": { "type": "number" },
+        "autoSyncBCV": { "type": "boolean" },
+        "bcvRate": { "type": "number" },
+        "bcvLastSynced": { "type": "string", "maxLength": 50 },
+        "bcvRateDate": { "type": "string", "maxLength": 50 },
+        "secondaryCurrencyCode": { "type": "string", "maxLength": 10 },
+        "secondaryCurrencySymbol": { "type": "string", "maxLength": 10 },
+        "secondaryCurrencyName": { "type": "string", "maxLength": 50 },
+        "lastRateUpdate": { "type": "string", "maxLength": 50 },
+        "autoAudioPush": { "type": "boolean" },
+        "city": { "type": "string", "maxLength": 100 }
+      },
+      "required": ["storeName", "whatsappNumber", "baseExchangeRate"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "Store product with pricing in USD, category, and inventory",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 150 },
+        "slug": { "type": "string", "maxLength": 150 },
+        "category": { "type": "string", "maxLength": 100 },
+        "priceUSD": { "type": "number" },
+        "stock": { "type": "number" },
+        "image": { "type": "string", "maxLength": 500000 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "features": { "type": "array" },
+        "badge": { "type": "string", "maxLength": 50 },
+        "sku": { "type": "string", "maxLength": 50 }
+      },
+      "required": ["id", "name", "priceUSD", "category"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Customer purchase order with line items, bimonetary totals, and delivery info",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "orderNumber": { "type": "string", "maxLength": 50 },
+        "createdAt": { "type": "string", "maxLength": 50 },
+        "customerName": { "type": "string", "maxLength": 150 },
+        "customerPhone": { "type": "string", "maxLength": 50 },
+        "customerAddress": { "type": "string", "maxLength": 300 },
+        "deliveryMethod": { "type": "string", "maxLength": 50 },
+        "paymentMethod": { "type": "string", "maxLength": 50 },
+        "notes": { "type": "string", "maxLength": 1000 },
+        "items": { "type": "array" },
+        "subtotalUSD": { "type": "number" },
+        "subtotalSecondary": { "type": "number" },
+        "totalUSD": { "type": "number" },
+        "totalSecondary": { "type": "number" },
+        "exchangeRateUsed": { "type": "number" },
+        "secondaryCurrencySymbol": { "type": "string", "maxLength": 10 },
+        "secondaryCurrencyCode": { "type": "string", "maxLength": 10 },
+        "status": { "type": "string", "maxLength": 50 },
+        "whatsappSent": { "type": "boolean" }
+      },
+      "required": ["id", "orderNumber", "customerName", "customerPhone", "items", "totalUSD"]
+    }
+  },
+  "firestore": {
+    "/storeConfig/{configId}": {
+      "schema": "StoreConfig",
+      "description": "Store configuration and exchange rates accessible by public storefront and editable by owner"
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Catalog products viewable by customers and manageable by owner"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Orders created by shoppers and managed by store owner"
+    },
+    "/sessions/{sessionId}": {
+      "schema": "StoreConfig",
+      "description": "Owner authentication sessions for multi-device login"
+    }
+  }
+}
