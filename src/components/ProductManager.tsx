@@ -796,15 +796,14 @@ export const ProductManager: React.FC<ProductManagerProps> = ({
                               <span className="absolute left-2.5 top-2 text-stone-400 font-bold font-mono text-xs">
                                 $
                               </span>
-                              <input
-                                type="number"
-                                step="0.05"
-                                min="0.01"
-                                value={
-                                  priceEdits[product.id] !== undefined
-                                    ? priceEdits[product.id]
-                                    : product.priceUSD.toString()
-                                }
+                             <input 
+  type="number" 
+  step="any" 
+  min="0" 
+  value={priceEdits[product.id] !== undefined ? priceEdits[product.id] : product.priceUSD.toString()} 
+  onChange={(e) => setPriceEdits((prev) => ({...prev, [product.id]: e.target.value}))} 
+  className="..." 
+/>
                                 onChange={(e) =>
                                   setPriceEdits((prev) => ({
                                     ...prev,
